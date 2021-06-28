@@ -1,0 +1,300 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+\usepackage{xcolor}
+\pagecolor[rgb]{0.15,0.15,0.15} %black
+\color[rgb]{1,1,1} %grey
+
+\newfontfamily\mylistingsfont{PT Mono}
+\definecolor{lbcolor}{rgb}{0.2,0.2,0.2}  
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\size giant
+OS Dry 2
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size large
+22/05/2021
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<row topspace="2cm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size huge
+Dani Bondar - 206560856
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="1cm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size huge
+Gur Telem - 206631848
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Question
+\end_layout
+
+\begin_layout Enumerate
+Answer 1.
+ the size of each frame is 4KB which needs to be represented by 12 bits
+ of offset.
+ Every PTE is rounded up to 64 bits (=8Bytes).
+ Because the size of every frame of the page table is of size 4KB -we have
+ a total of 512 entries in every table (= 4KB/8Bytes).
+ there for we need 9bits to represent the 512 entries at each level, and
+ at the last level we are left with 2 bits to represent the page table.
+\end_layout
+
+\begin_layout Enumerate
+Answer c.
+ we need to represent 40 bits of address in every entry.
+ 4Bytes is 32 bits of address space (to small), 5Bytes is 40 bits of address
+ space (just enough) 
+\end_layout
+
+\begin_layout Enumerate
+Answer b.
+ as mentioned before, the size of each page table is 4KB.
+ in the current setting the size of each PTE is 5Bytes.
+ this means that we have 819 entries (=
+\begin_inset Formula $\frac{4KB}{5Bytes}=\frac{4096Bytes}{5Bytes}\cong819$
+\end_inset
+
+).
+ there for if we want to access the index of the first page table we need
+ to do a modulo function 
+\begin_inset Formula $f(vpn)=vpn\%819$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Answer c.
+ like the previous question, each page table is of size 4KB with 819 entries.
+ to access the index of the second page table we first need to 'remove'
+ the index of the first page table by dividing the VPN by 819.
+ and then like the previous question, do a modulo function.
+ in conclusion 
+\begin_inset Formula $f_{2}(vpn)=\left(\frac{vpn}{819}\right)\%819$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Answer d.
+ to access the final index we need to remove the indices of the previous
+ page tables, we can do that by dividing twice the VPN.
+ 
+\begin_inset Formula $f_{3}(vpn)=\frac{\frac{vpn}{819}}{819}$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Enumerate
+Answer d.
+ by reducing the redundant sign extension of 8Bytes, and keeping the physical
+ address to 5Bytes we reduced the size of each PTE and by that managed to
+ insert more entries to each page table (819 instead of 512).
+ there for 
+\end_layout
+
+\begin_layout Section
+Question
+\end_layout
+
+\begin_layout Enumerate
+Answer a.
+ the COW mechanism is done via a page fault handler, thus we will get a
+ TLB miss (because this is the first time we are using the data), then we
+ will go over the page table and won't find the entry (because it doesn't
+ exists), then will get a page fault and the OS would write the data.
+\end_layout
+
+\begin_layout Enumerate
+Answer b.
+ the child process RSP register points to the stack of the parent process.
+ and when he tries to call for the function printf he needs to use and write
+ to on the stack (the ret address and so on) - and a page fault will accrue
+ to update the pointer to the correct stack.
+\end_layout
+
+\begin_layout Enumerate
+Answer b.
+ when running the code with the COW mechanism the array a[N] isn't being
+ copied to the child process (because the child process isn't using the
+ array a).
+ meanwhile the code that uses the NO-COW mechanism, starts by copying the
+ array a to the child process and by that wastes time on unnecessary copy
+ actions.
+\end_layout
+
+\begin_layout Enumerate
+Answer c.
+ the array a is of size 100*1024*1024*sizeof(int) (
+\begin_inset Formula $\cong419MB$
+\end_inset
+
+).
+ each time the child process writes to the array a, he access some page
+ table, and generates a page fault.
+ the OS preforms the COW, and copies only the necessary page form the parent.
+ for the next 1000 iterations the child process has the valid page of the
+ array 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\end_inset
+
+ and doesn't generates a page fault.
+ in conclusion the child process generates 
+\begin_inset Formula $\frac{100\cdot1024\cdot1024\cdot4B}{4KB}=104865\cong100*1024$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Answer c.
+ in both cases the same amount of data is being copied.
+ but in the NO-COW there is considerably less page faults then the COW code
+ - all of the data is copied once at the start of the code.
+\end_layout
+
+\begin_layout Section
+Question
+\end_layout
+
+\end_body
+\end_document
