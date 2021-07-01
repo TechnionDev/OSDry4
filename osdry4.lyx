@@ -312,8 +312,12 @@ strace ls
 
 \begin_layout Enumerate
 here is the code:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 \begin_inset listings
-inline true
+inline false
 status open
 
 \begin_layout Plain Layout
@@ -354,13 +358,24 @@ int main(int argc.
 
 \end_inset
 
-and here is the screenshot:
-\begin_inset Newline newline
-\end_inset
 
-<insert_screenshot_1>
 \end_layout
 
+\begin_layout Standard
+and here is the screenshot:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Screen Shot_1.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 we added two write() syscalls before and after the malloc to try to identify
  the wanted malloc.
@@ -426,7 +441,14 @@ and here is the screenshot, we now can see that the malloc was done via
 \begin_inset Newline newline
 \end_inset
 
-<insert screenshot_2>
+
+\begin_inset Graphics
+	filename Screen Shot_2.png
+	scale 40
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -471,7 +493,23 @@ we found by narrowing the search that the break point is 134536 - 7.
 
 \begin_deeper
 \begin_layout Standard
-<screen shot 134536&7>
+\begin_inset Graphics
+	filename 134536.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename 134537.png
+	scale 40
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
